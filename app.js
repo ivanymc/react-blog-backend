@@ -53,6 +53,13 @@ app.post('/reactblogs', (req, res) => {
     .catch( err => console.log(err));
 });
 
+app.delete('/reactblogs/:id', (req, res) => {
+  const id = req.params.id;
+  Blog.findByIdAndDelete(id)
+    .then( result => res.json({ redirect: '/' }))
+    .catch( err => console.log(err) );
+})
+
 app.use( (req, res) => {
   res.status(404).send('404');
 });
