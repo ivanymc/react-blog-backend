@@ -39,7 +39,7 @@ app.get('/reactblogs', (req, res) => {
     .catch( err => console.log(err));
 });
 
-app.get('/reactblogs/:id', (req, res) => {
+app.get('/reactblogs/:id', (req, res) => {  
   const id = req.params.id;
   Reactblog.findById(id)
     .then( result => res.send(result))
