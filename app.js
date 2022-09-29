@@ -39,6 +39,13 @@ app.get('/reactblogs', (req, res) => {
     .catch( err => console.log(err));
 });
 
+app.get('/reactblogs/:id', (req, res) => {
+  const id = req.params.id;
+  Reactblog.findById(id)
+    .then( result => res.send(result))
+    .catch( err => res.status(404).send('404'));
+})
+
 app.post('/reactblogs', (req, res) => {
   const reactblog = new Reactblog(req.body);
   reactblog.save()
