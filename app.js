@@ -55,7 +55,7 @@ app.post('/reactblogs', (req, res) => {
 
 app.delete('/reactblogs/:id', (req, res) => {
   const id = req.params.id;
-  Blog.findByIdAndDelete(id)
+  Reactblog.findByIdAndDelete(id)
     .then( result => res.json({ redirect: '/' }))
     .catch( err => console.log(err) );
 })
