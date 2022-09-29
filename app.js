@@ -28,6 +28,9 @@ app.use(
   })
 );
 
+app.get('/', (req, res) => {
+  res.send("OK");
+});
 
 // For React Blog
 app.get('/reactblogs', (req, res) => {
@@ -41,6 +44,10 @@ app.post('/reactblogs', (req, res) => {
   reactblog.save()
     .then( result => res.send("hello"))
     .catch( err => console.log(err));
+});
+
+app.use( (req, res) => {
+  res.status(404).send('404');
 });
 
 
