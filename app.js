@@ -43,21 +43,21 @@ app.get('/reactblogs/:id', (req, res) => {
   const id = req.params.id;
   Reactblog.findById(id)
     .then( result => res.send(result))
-    .catch( err => res.status(404).send('404'));
+    .catch( err => res.send(err));
 })
 
 app.post('/reactblogs', (req, res) => {
   const reactblog = new Reactblog(req.body);
   reactblog.save()
-    .then( result => res.send("hello"))
+    .then( result => res.send(result))
     .catch( err => console.log(err));
 });
 
 app.delete('/reactblogs/:id', (req, res) => {
   const id = req.params.id;
   Reactblog.findByIdAndDelete(id)
-    .then( result => res.json({ redirect: '/' }))
-    .catch( err => console.log(err) );
+    .then( result => res.send(result))
+    .catch( err => res.send(err) );
 })
 
 app.use( (req, res) => {
